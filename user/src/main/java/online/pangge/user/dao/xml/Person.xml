@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.pangge.user.dao.mapper.PersonMapper">
+    <resultMap type="online.pangge.user.domain.PersonDO" id="person">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insert" parameterType="online.pangge.user.domain.PersonDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into person (username,age) values (#{username},#{age});
+    </insert>
+    <select id="selectAll" resultMap="person">
+        select * from person;
+    </select>
+</mapper>
